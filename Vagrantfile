@@ -31,14 +31,14 @@ Vagrant.configure("2") do |config|
 
   # Configuration options for the VMware Fusion provider.
   config.vm.provider :vmware_fusion do |v|
-    v.vmx["memsize"] = "1024"
-    v.vmx["numvcpus"] = "1"
+    v.vmx["memsize"] = "2048"
+    v.vmx["numvcpus"] = "2"
   end
 
   # Configuration options for Hyper-V provider.
   config.vm.provider :hyperv do |v, override|
-    v.memory = 1024
-    v.cpus = 1
+    v.memory = 2048
+    v.cpus = 2
   end
 
   # SSH Agent Forwarding
