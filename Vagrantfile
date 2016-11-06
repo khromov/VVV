@@ -252,9 +252,9 @@ Vagrant.configure("2") do |config|
   vvv_config['sites'].each do |site, args|
     if args['local_dir'] != File.join(vagrant_dir, 'www', site) then
       if vagrant_version >= "1.3.0"
-        config.vm.synced_folder args['local_dir'], args['vm_dir'], :owner => "www-data", :mount_options => [ "dmode=775", "fmode=774" ]
+        config.vm.synced_folder args['local_dir'], args['vm_dir'], :owner => "www-data", :mount_options => [ "dmode=777", "fmode=777" ]
       else
-        config.vm.synced_folder args['local_dir'], args['vm_dir'], :owner => "www-data", :extra => 'dmode=775,fmode=774'
+        config.vm.synced_folder args['local_dir'], args['vm_dir'], :owner => "www-data", :extra => 'dmode=777,fmode=777'
       end
     end
   end
