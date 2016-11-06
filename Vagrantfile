@@ -93,12 +93,12 @@ Vagrant.configure("2") do |config|
 
   # VMWare Workstation can use the same package as Fusion
   config.vm.provider :vmware_workstation do |v, override|
-    override.vm.box = "netsensia/ubuntu-trusty64"
+    override.vm.box = "cbednarski/ubuntu-1404"
   end
 
   # Hyper-V uses a different base box.
   config.vm.provider :hyperv do |v, override|
-    override.vm.box = "ericmann/trusty64"
+    override.vm.box = "cbednarski/ubuntu-1404"
   end
 
   config.vm.hostname = "vvv"
