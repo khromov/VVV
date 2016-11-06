@@ -60,6 +60,14 @@ Vagrant.configure("2") do |config|
   config.vm.provider :vmware_fusion do |v|
     v.vmx["memsize"] = "1024"
     v.vmx["numvcpus"] = "1"
+    v.gui = true
+  end
+
+  # Configuration options for the VMware Workstation provider.
+  config.vm.provider :vmware_fusion do |v|
+    v.vmx["memsize"] = "1024"
+    v.vmx["numvcpus"] = "1"
+    v.gui = true
   end
 
   # Configuration options for Hyper-V provider.
@@ -88,7 +96,7 @@ Vagrant.configure("2") do |config|
 
   # The VMware Fusion Provider uses a different naming scheme.
   config.vm.provider :vmware_fusion do |v, override|
-    override.vm.box = "netsensia/ubuntu-trusty64"
+    override.vm.box = "cbednarski/ubuntu-1404"
   end
 
   # VMWare Workstation can use the same package as Fusion
@@ -98,7 +106,7 @@ Vagrant.configure("2") do |config|
 
   # Hyper-V uses a different base box.
   config.vm.provider :hyperv do |v, override|
-    override.vm.box = "cbednarski/ubuntu-1404"
+    override.vm.box = "netsensia/ubuntu-trusty64"
   end
 
   config.vm.hostname = "vvv"
@@ -236,9 +244,9 @@ Vagrant.configure("2") do |config|
   # inside the VM will be created that acts as the default location for nginx sites. Put all
   # of your project files here that you want to access through the web server
   if vagrant_version >= "1.3.0"
-    config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data", :mount_options => [ "dmode=775", "fmode=774" ]
+    config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data" #, :mount_options => [ "dmode=775", "fmode=774" ]
   else
-    config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data", :extra => 'dmode=775,fmode=774'
+    config.vm.synced_folder "www/", "/srv/www/", :owner => "www-data" #, :extra => 'dmode=775,fmode=774'
   end
 
   vvv_config['sites'].each do |site, args|
